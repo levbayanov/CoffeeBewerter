@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
 public class TelegramBot extends TelegramLongPollingBot {
     String bot_token = "6770665703:AAF7XROQ82HGLJSkWC217USXrgp35nUDP2A";
     String bot_name = "CoffeeBewerter";
@@ -22,11 +23,14 @@ public class TelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message inMessage = update.getMessage();
         String chatId = inMessage.getChatId().toString();
-        String userMessage =inMessage.getText();
+        String userMessage = inMessage.getText();
+
+        BotLogics botLogics = new BotLogics();
+        String answer = botLogics.readeMessage(userMessage);
 
         SendMessage outMessage = new SendMessage();
         outMessage.setChatId(chatId);
-        outMessage.setText(userMessage);
+        outMessage.setText(answer);
 
         try {
             execute(outMessage);
