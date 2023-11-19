@@ -7,8 +7,14 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class TelegramBot extends TelegramLongPollingBot {
+
+    BotLogics botLogics;
     String bot_token = "6770665703:AAF7XROQ82HGLJSkWC217USXrgp35nUDP2A";
     String bot_name = "CoffeeBewerter";
+
+    public TelegramBot(BotLogics botLogics) {
+        this.botLogics = botLogics;
+    }
 
     @Override
     public String getBotUsername() {
@@ -26,9 +32,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         String chatId = inMessage.getChatId().toString();
         String userMessage = inMessage.getText();
 
-        BotLogics botLogics = new BotLogics();
-        String answer = botLogics.readeMessage(userMessage);
-
+        String answer = botLogics.ProcessingMessage(userMessage);
         SendMessage outMessage = new SendMessage();
         outMessage.setChatId(chatId);
         outMessage.setText(answer);

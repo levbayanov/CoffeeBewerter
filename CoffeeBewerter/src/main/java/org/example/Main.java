@@ -8,7 +8,8 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 public class Main {
     public static void main(String[] args)
     {
-        TelegramBot telegramBot = new TelegramBot();
+        BotLogics botLogics = new BotLogics();
+        TelegramBot telegramBot = new TelegramBot(botLogics);
 
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
@@ -16,5 +17,6 @@ public class Main {
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
