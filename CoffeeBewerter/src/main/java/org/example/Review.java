@@ -29,7 +29,7 @@ public class Review implements Serializable {
             out.flush();
             out.close();
 
-            System.out.println("Одзыв сохранен");
+            System.out.println("Отзыв сохранен");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class Review implements Serializable {
             FileInputStream fileIn = new FileInputStream(nameCoffee+".txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             Review review = (Review) in.readObject();
-            System.out.println("Одзыв востановлен");
+            System.out.println("Отзыв востановлен");
             return review;
         }
         catch (IOException | ClassNotFoundException e) {
