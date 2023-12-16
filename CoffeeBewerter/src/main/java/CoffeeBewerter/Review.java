@@ -1,9 +1,6 @@
-package org.example;
+package CoffeeBewerter;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Review implements Serializable {
     private String nameCoffee;
