@@ -2,12 +2,12 @@ package CoffeeBewerter;
 
 import java.io.*;
 
-public class Review implements Serializable {
+public class Rating implements Serializable {
     private String nameCoffee;
     public int[] grades;
     public String average;
 
-    Review(String nameCoffee, int grade){
+    Rating(String nameCoffee, int grade){
         this.nameCoffee = nameCoffee;
         this.grades = new int[5];
         setGrade(grade);
@@ -32,13 +32,13 @@ public class Review implements Serializable {
         }
     }
 
-    public static Review loadState(String nameCoffee){
+    public static Rating loadState(String nameCoffee){
         try {
             FileInputStream fileIn = new FileInputStream(nameCoffee+".txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            Review review = (Review) in.readObject();
+            Rating rating = (Rating) in.readObject();
             System.out.println("Отзыв востановлен");
-            return review;
+            return rating;
         }
         catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

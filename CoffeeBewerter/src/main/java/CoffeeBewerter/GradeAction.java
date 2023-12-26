@@ -20,7 +20,7 @@ public class GradeAction implements Action{
     public BotApiMethod callback(Update update) {
         var message = update.getMessage();
         var chatId = message.getChatId().toString();
-
+        //работа с бд
         String text = "Спасибо за отзыв";
         return new SendMessage(chatId, text);
     }
